@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/lrgeorge27/ExpressApp#readme",
   "dependencies": {
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "jquery": "^3.3.1"
   }
 }

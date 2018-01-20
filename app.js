@@ -1,9 +1,9 @@
 var express = require('express');
 var app = express();
 
-app.get('/', function(request, response) {
-    response.send('Hello World');
-});
+// app.get('/', function(request, response) {
+//     response.send('Hello World');
+// });
 
 app.get('/name', function(request, response) {
     var name = "Lauren George";
@@ -20,6 +20,16 @@ app.get('/date', function(request, response) {
     response.send(date);
 
 });
+
+app.get('/cities', function(request, response) {
+    var cities = ['Providence', 'New Orleans', 'Omaha', 'Chicago'];
+    response.json(cities);
+});
+// app.get('/', function(request, response) {
+//     response.sendFile(__dirname + '/public/index.html');
+// });
+
+app.use(express.static('public')); //middleware to link index.html from public folder to browser call
 
 app.listen(process.env.PORT, function() {
     console.log('Listening on env.PORT');
