@@ -1,0 +1,22 @@
+{
+  "name": "express_app",
+  "version": "1.0.0",
+  "description": "Express app assignment for CareerDevs based on Code School",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo $PATH"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lrgeorge27/ExpressApp.git"
+  },
+  "author": "Lauren George",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lrgeorge27/ExpressApp/issues"
+  },
+  "homepage": "https://github.com/lrgeorge27/ExpressApp#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
