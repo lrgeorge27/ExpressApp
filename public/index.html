@@ -11,10 +11,16 @@
 <body>
     <h1>Cities</h1>
     <form>
-        <select class="cities-list">
-            
-        </select>
+        <input type="text" name="addCity" placeholder="City" />
+        <input type="text" name="state" placeholder="State" />
+        <input type="submit" />
+
+        <ul class="cities-list">
+        </ul>
     </form>
+    <div id="displayState">
+    </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!--ajax script necessary to make the ajax call from client.js, jquery.js not needed-->
     <!--<script src="jquery.js"></script>-->
