@@ -37,21 +37,10 @@ router.route('/') //root path relaive to path where it is mounted
         }
     })
     .post(parseUrlEncoded, function(request, response) { //routes can take multiple handlers as arguments and call them sequentially
-        if (request.body.addCity.length >= 4 && request.body.state.length >= 2) {
-            var newCity = request.body;
-            cities[newCity.addCity] = newCity.state;
-            response.status(201).json(newCity.addCity);
-        }
-        else {
-            response.status(400).json("Invalid city or state.");
-            alert = "Invalid Entry";
-        }
+        var newCity = request.body;
+        cities[newCity.addCity] = newCity.state;
+        response.status(201).json(newCity.addCity);
     });
-// .delete(function(request, response) {    //only works after addition
-//     delete cities[request.cityName]; //removes entry from object
-//     response.sendStatus(200); //used when we don't set a response body
-// });
-
 
 //Use dynamic route to return state, 200 success code
 router.route('/:state')
@@ -72,21 +61,26 @@ router.route('/:state')
         else {
             response.json(state);
         }
-    });
-
-router.route('/:addCity')
-    //middleware function to normalize city name input
-    // .all(function(request, response, next) { //delete works without this but only after an addition
-    //     var name = request.params.state;
-    //     var cityName = name[0].toUpperCase() + name.slice(1).toLowerCase(); //changes newOrleans to Neworleans, adjust later to create camelCase or accomodate spaces
-    //     request.cityName = cityName; //allows access from other routes in app
-    //     next();
-    // }) //needs to come before sub-routes for add and delete to work
-
-    // app.route('/cities/:addCity')
+    })
     .delete(function(request, response) {
         delete cities[request.cityName]; //removes entry from object
         response.sendStatus(200); //used when we don't set a response body
     });
+
+
+// router.route('/:addCity')
+//middleware function to normalize city name input
+// .all(function(request, response, next) { //delete works without this but only after an addition
+//     var name = request.params.state;
+//     var cityName = name[0].toUpperCase() + name.slice(1).toLowerCase(); //changes newOrleans to Neworleans, adjust later to create camelCase or accomodate spaces
+//     request.cityName = cityName; //allows access from other routes in app
+//     next();
+// }) //needs to come before sub-routes for add and delete to work
+
+// app.route('/cities/:addCity')
+// .delete(function(request, response) {
+//     delete cities[request.cityName]; //removes entry from object
+//     response.sendStatus(200); //used when we don't set a response body
+// });
 
 module.exports = router;
