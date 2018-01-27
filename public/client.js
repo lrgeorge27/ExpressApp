@@ -39,7 +39,7 @@ $(function() {
             url: '/cities',
             data: cityData
         }).done(function(cityName) {
-            appendToList([cityName]); //array with single argument, keeps function parameters consistant
+            appendToList([cityName]);//array with single argument, keeps function parameters consistant
             form.trigger('reset'); //clears form text input fields
         });
 

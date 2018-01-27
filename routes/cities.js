@@ -1,7 +1,7 @@
 /* global app */
 
 var express = require('express');
-var app = express();
+// var app = express();
 var router = express.Router(); //returns router instance, mounted as middleware
 var bodyParser = require('body-parser'); //parsing depends on middleware not shipped with Express
 var parseUrlEncoded = bodyParser.urlencoded({ extended: false }); //forces use of the native querystring Node library
@@ -18,18 +18,18 @@ var cities = {
     // 'Sanfrancisco': 'California',
     // 'Newyorkcity': 'New York'
 };
-var length = Object.keys(cities).length; //find the length of the object, needs global scope
+// var length = Object.keys(cities).length; //find the length of the object, needs global scope
 
 //Extract routes to modules
 router.route('/') //root path relaive to path where it is mounted
     // app.route('/cities')
     .get(function(request, response) {
         //add a query string parameter
-        if (request.query.limit > 0 && request.query.limit < length) { //only slice if limit request is within the object length
+        if (request.query.limit > 0 && request.query.limit < Object.keys(cities).length) { //only slice if limit request is within the object length
             var sliced = Object.keys(cities).slice(0, request.query.limit); //must use Object.keys for slice() to work
             response.json(sliced);
         }
-        else if (request.query.limit > length) { //bad request error if limit exceeds object length
+        else if (request.query.limit > Object.keys(cities).length) { //bad request error if limit exceeds object length
             response.status(400).json('Your request exceeds the object length');
         }
         else {
